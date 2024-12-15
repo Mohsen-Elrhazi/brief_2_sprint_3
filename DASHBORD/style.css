@@ -1,0 +1,171 @@
+*{
+    margin:0;
+    padding:0;
+    
+}
+
+:root{
+    --colorMain:#55CCA2;
+}
+
+section{
+    width:100%;
+    height:100vh;
+    display:grid;
+    /* background-color: #8a3131; */
+    grid-template-columns: 220px auto;
+    gap:30px;
+
+}
+
+.dashbord{
+    background-color: rgba(49, 45, 45, 0.596);
+    width:210px;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    gap:120px;
+    align-items: center;    
+    color:#0a0a0a;
+}
+
+
+
+img{
+    width:32px;
+    /* background-color: #a20c0c; */
+}
+
+.contain{
+    height:100%;
+    display:flex;   
+    flex-direction:column;
+    /* gap:120px; */
+    justify-content:space-around;
+    align-items: flex-start; 
+    /* background-color: #148892; */
+}
+.choix{
+    height: 570px;
+    display:flex;
+    flex-direction:column;
+    /* gap:60px; */
+    justify-content:space-between;
+    align-items:start;
+    /* background-color: #324b34; */
+}
+
+.pl-cl-na,.support-settings{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+    /* background-color: #910505; */
+    padding:4px;
+}
+
+.link{
+    text-decoration: none;
+    color:inherit;
+}
+.pl-cl-na  div,
+.support-settings div,
+.log-out{
+    padding:2px;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:12px;
+    cursor:pointer;
+    margin-left:16px;
+
+    /* padding-left:30px; */
+    /* background-color: #3a38b6; */
+}
+
+
+.fa-arrow-right-from-bracket{
+    font-size: 23px;
+    transform:rotate(180deg);
+}
+
+span{
+    font-size:18px;
+}
+
+
+.main{
+    position:relative;
+    background-color: #121212;
+    width:98%;
+    height:70vh;
+    margin-top:50px;
+   
+}
+
+
+
+.navbar{
+    background-color: #981717;
+    width:100%;
+    height:50px;
+    padding:0px 16px !important;
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.contain-players{
+    background-color: #222789;
+    width:99%;
+    height:80%;
+    margin:18px auto;
+
+}
+
+
+form {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    align-items:center ;
+    /* justify-content: stretch; */
+    /* color:#fff; */
+} 
+
+
+ /* form h3{
+    grid-column:span 2;
+    text-align:center;
+} */
+
+
+
+ form input,
+ form select
+{
+    width:100%;
+    padding:10px;
+    border-radius:4px;
+    border:none;
+    outline:none;
+    border:1.2px solid #757575;
+    /* margin-top:4px; */
+    background-color: #2B2A2A;
+    transition: 0.3s ease;
+    color:#fff;
+    font-size:16px
+}
+
+form input:hover{
+    background-color: #404040;
+}
+
+ form input:focus{
+    border-color:var(--colorMain);
+    background-color: #404040;
+}
+
+form label{
+    font-size:18px;
+}
+
