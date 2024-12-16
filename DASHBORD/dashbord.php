@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <title>Document</title>
+    <title>dashbord</title>
 </head>
 
 <body>
@@ -37,16 +37,19 @@
                             </div>
                         </a>
 
+                        <a class="link" href="club.php">
+                            <div>
+                                <img src="./images/club-de-football.png" />
+                                <span>Club</span>
+                            </div>
+                        </a>
 
-                        <div>
-                            <img src="./images/club-de-football.png" />
-                            <span>Club</span>
-                        </div>
-
-                        <div>
-                            <img src="./images/embleme.png" />
-                            <span>Nationality</span>
-                        </div>
+                        <a class="link" href="nationality.php">
+                            <div>
+                                <img src="./images/embleme.png" />
+                                <span>Nationality</span>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="support-settings">

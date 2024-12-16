@@ -18,7 +18,7 @@ body{
 
 nav{
     width:100%;
-    height:50px;
+    height:60px;
     background-color:#3d3b3b;
     top:0;
     display:flex;
@@ -35,9 +35,7 @@ nav ul{
     gap:70px;
 }
 
-nav ul li{
-    /* display:inline; */
-}
+
 
 nav ul li a{
     text-decoration:none;
@@ -46,26 +44,20 @@ nav ul li a{
 }
 nav h1{
     color:#fff;
+    font-size:30px;
 }
 
-nav input[type="search"]{
-    padding:7px 30px 7px 6px;
-    border-radius:12px;
-    border:none;
-    position:relative;
-    margin-left:511px;
-    border:2px solid var(--colorMain)
-}
 
-nav button {
-    color:#000;
-    padding:8px 16px;
+
+/* nav button {
+    color:#ffffff;
+    padding:9px 20px ;
     background-color: var(--colorMain);
     border:none;
     border-radius:4px;
-    font-size:14px;
+    font-size:17px;
     cursor:pointer;
-}
+} */
 
 .contain-terrain{
   display:grid;
@@ -378,39 +370,7 @@ section .menu form button{
     letter-spacing: 1px;
 }
 
-/* todo reservation */
 
-#reservation{
-    width:96%;
-    height:auto;
-    /* background-color: #00000013; */
-    box-shadow: 0 0 2px 2px rgb(218, 213, 213);
-    margin:0 auto 10px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:50px;
-    padding:10px 6px 20px 25px;
-    transition: all 0.7s ease;
-}
-
-#reservation .new-card-player:hover:not(:has(.divIcons:hover)) {
-    filter: drop-shadow(0px 6px 10px var(--colorMain));
-    cursor:pointer;
-    /* transform: scale(1.03); */
-}
-/* todo cars reserv */
-
-/* .cardPlayerReserv{
-    width: 130px;
-    height: 176px;
-    cursor:pointer;
-    transition: all 0.7s ease;
-}
-
-.cardPlayerReserv:hover:not(:has(.divIcons:hover)) {
-    filter:drop-shadow(0px  6px 10px #e6c72c);
-    transform:scale(1.03)
-} */
 
 /* todo style de icon update */
 .fa-pen-to-square,.fa-trash {
@@ -450,6 +410,41 @@ section .menu form button{
 
 .img-player{
     width:70px;
+}
+
+/*! login form */
+#login-form{
+    display:flex;
+    flex-direction: column;
+    gap:12px;
+}
+
+#login-form div{
+    display:flex;
+    flex-direction: column;
+}
+
+#login-form input{
+    width:100%;
+    padding:12px;
+    border-radius:4px;
+    border:none;
+    outline:none;
+    border:1.2px solid #757575;
+    margin-top:4px;
+    background-color: #2B2A2A;
+    transition: 0.3s ease;
+    color:#fff;
+    font-size:16px
+}
+
+#login-form input:hover{
+    background-color: #404040;
+}
+
+#login-form input:focus{
+    border-color:var(--colorMain);
+    background-color: #404040;
 }
 
 

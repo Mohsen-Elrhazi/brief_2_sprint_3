@@ -12,7 +12,7 @@
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Document</title>
+    <title>players</title>
 </head>
 
 <body>
@@ -39,16 +39,19 @@
                             </div>
                         </a>
 
+                        <a class="link" href="./club.php">
+                            <div>
+                                <img src="./images/club-de-football.png" />
+                                <span>Club</span>
+                            </div>
+                        </a>
 
-                        <div>
-                            <img src="./images/club-de-football.png" />
-                            <span>Club</span>
-                        </div>
-
-                        <div>
-                            <img src="./images/embleme.png" />
-                            <span>Nationality</span>
-                        </div>
+                        <a class="link" href="./nationality.php">
+                            <div>
+                                <img src=" ./images/embleme.png" />
+                                <span>Nationality</span>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="support-settings">
@@ -78,10 +81,11 @@
         <div class="main">
 
             <div class="navbar">
-                <input type="search">
-                <!-- <button id="add-player" type="button" class="btn btn-success px-4">ADD</button> -->
+                <div class="d-flex gap-3">
+                    <input class="custom-search" type="search" placeholder="Search Player">
+                    <button id="search" type="button" class="btn btn-warning px-4">Search</button>
 
-                <!-- Button trigger modal -->
+                </div> <!-- Button trigger modal -->
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Add Player
                 </button>
@@ -397,28 +401,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
 
-    <script>
-    document.querySelectorAll("#normal-player").forEach((element) => {
-        element.style.display = "none";
-    });
-    document.getElementById("post").addEventListener("change", function() {
-        if (document.getElementById("post").value === "GK") {
-            document.querySelectorAll("#normal-player").forEach((element) => {
-                element.style.display = "none";
-            });
-            document.querySelectorAll("#propriete-GK").forEach((element) => {
-                element.style.display = "block";
-            });
-        } else {
-            document.querySelectorAll("#normal-player").forEach((element) => {
-                element.style.display = "block";
-            });
-            document.querySelectorAll("#propriete-GK").forEach((element) => {
-                element.style.display = "none";
-            });
-        }
-    });
-    </script>
+    <script src="./dashbord.js"></script>
 </body>
 
 </html>
