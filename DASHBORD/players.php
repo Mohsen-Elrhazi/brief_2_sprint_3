@@ -103,7 +103,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="form-infos">
+                                <form id="form-player">
                                     <!-- <h3>Entrer les informations des joueurs</h3> -->
 
                                     <div>

@@ -103,25 +103,27 @@
                             </div>
                             <div class="modal-body">
 
-                                <form id="form-infos">
+                                <form id="form-nationality" method="post" action="insert_natio.php">
 
                                     <div>
-                                        <label for="name">name :</label>
-                                        <input id="name" type="text" placeholder="Name" maxlength="" />
+                                        <label for=" name">name :</label>
+                                        <input id="name" name="name" type="text" placeholder="Name" maxlength="" />
                                     </div>
 
                                     <div>
                                         <label for="ImageURL">ImageURL :</label>
-                                        <input id="ImageURL" type="text" placeholder="ImageURL" maxlength="" />
+                                        <input id="ImageURL" name="ImageURL" type="text" placeholder="ImageURL"
+                                            maxlength="" />
                                     </div>
 
-                                </form>
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -129,9 +131,35 @@
 
             </div>
 
-            <!-- <div class="contain-players">
+            <!--affichge table nation  -->
+            <div class="contain-affichage">
+                <?php
+                include '../connexion.php'; 
 
-            </div> -->
+                $sql = "SELECT NationalityID, NationalityName , NationalityImage  FROM nationality";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                  echo "<table class='table text-center'>";
+                  echo "<thead><tr><th>ID</th><th>Nom</th><th>Logo</th><th>Buttons</th></tr></thead>";
+                 echo "<tbody class='table-group-divider'>";
+                 while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                  echo "<td>" . $row["NationalityID"] . "</td>";
+                 echo "<td>" . $row["NationalityName"] . "</td>";
+                 echo "<td><img src='" . $row["NationalityImage"] . "' alt='Nationality Image' style='width:50px; height:50px;'></td>";
+                 echo "<td><button class='btn btn-primary px-4 me-3 ms-4 mt-2'>EDIT</button> <button class='btn btn-danger ms-2 mt-2'>DELETE</button></td>";
+                echo "</tr>";
+                }
+            echo "</tbody>";
+                 echo "</table>";
+            } else {
+              echo "<p>Aucun Nationality trouvé.</p>";
+                        }
+            $conn->close(); 
+              ?>
+
+            </div>
 
 
 

@@ -94,18 +94,23 @@ span{
 
 
 .main{
-    position:relative;
-    background-color: #121212;
+    background-color: #d6d4d48b !important;
     width:98%;
-    height:70vh;
+    height:91vh;
     margin-top:50px;
-   
+}
+
+.contain-affichage{
+    /* background-color: #222789; */
+    width:99%;
+    height:90%;
+    margin:8px auto;
+    overflow: auto;
 }
 
 
-
 .navbar{
-    background-color: #848181;
+    background-color: #0c0c0c;
     width:100%;
     height:50px;
     padding:0px 16px !important;
@@ -144,27 +149,20 @@ span{
 
 
 
-.contain-players{
-    background-color: #222789;
-    width:99%;
-    height:80%;
-    margin:18px auto;
-
-}
-
-
-form {
+#form-player {
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:10px;
-    align-items:center ;
-    /* justify-content: stretch; */
-    /* color:#fff; */
+    align-items:center ; 
 } 
+ 
 
-
-
-
+#form-club,
+#form-nationality{
+    display:flex;
+    flex-direction: column;
+    gap:12px;
+}
 
 
  form input,
@@ -176,7 +174,6 @@ form {
     border:none;
     outline:none;
     border:1.2px solid #757575;
-    /* margin-top:4px; */
     background-color: #2B2A2A;
     transition: 0.3s ease;
     color:#fff;
