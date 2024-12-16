@@ -33,31 +33,33 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title fs-5 text-center" id="staticBackdropLabel">LOG IN
+                        <h2 class="modal-title fs-5 " id="staticBackdropLabel">LOG IN
                         </h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
-                        <form id="login-form">
+                        <form id="login-form" method="post" action="login.php">
 
                             <div>
                                 <label for="username">Username :</label>
-                                <input id="username" type="text" placeholder="username" maxlength="" />
+                                <input id="username" name="username" type="text" placeholder="username" maxlength="" />
                             </div>
 
                             <div>
                                 <label for="password">Password :</label>
-                                <input id="password" type="text" placeholder="password" maxlength="" />
+                                <input id="password" name="password" type="password" placeholder="password"
+                                    maxlength="" />
                             </div>
 
-                        </form>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
+                    </form>
+
                 </div>
             </div>
         </div>
