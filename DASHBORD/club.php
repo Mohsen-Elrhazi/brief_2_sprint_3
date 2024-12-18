@@ -101,7 +101,7 @@
                             </div>
                             <div class="modal-body">
 
-                                <form id="form-club" method="post" action="insert_club.php">
+                                <form id="form-club" method="post" action="./insert_club.php">
 
                                     <div>
                                         <label for=" name">name :</label>
@@ -131,6 +131,8 @@
 
             </div>
 
+
+            <!--  affichage clubs-->
             <div class="contain-affichage">
 
                 <?php

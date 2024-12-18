@@ -103,7 +103,7 @@
                             </div>
                             <div class="modal-body">
 
-                                <form id="form-nationality" method="post" action="insert_natio.php">
+                                <form id="form-nationality" method="post" action="./insert_natio.php">
 
                                     <div>
                                         <label for=" name">name :</label>
@@ -141,7 +141,7 @@
 
                 if ($result->num_rows > 0) {
                   echo "<table class='table text-center'>";
-                  echo "<thead><tr><th>ID</th><th>Nom</th><th>Logo</th><th>Buttons</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Nom</th><th>Image</th><th>Buttons</th></tr></thead>";
                  echo "<tbody class='table-group-divider'>";
                  while ($row = $result->fetch_assoc()) {
                 echo "<tr>";

@@ -5,7 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"]); 
     $imageURL = trim($_POST["ImageURL"]);
     
-
     $stmt = $conn->prepare("INSERT INTO nationality (NationalityName, NationalityImage) VALUES (?, ?)");
     $stmt->bind_param("ss", $name, $imageURL);
 

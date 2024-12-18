@@ -4,10 +4,10 @@ $username="root";
 $password="";
 $dbname="fut_champions";
 
-$conn=new mysqli($servername,$username,$password,$dbname);
+$conn=mysqli_connect($servername,$username,$password,$dbname);
 
-if($conn->connect_error){
-    die("ERROR".$conn->connect_error);
-    
+if(!$conn){
+    die("ERROR".$mysqli -> connect_error);
+    exit();
 }
 ?>
