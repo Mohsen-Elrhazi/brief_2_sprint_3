@@ -237,7 +237,7 @@
                                     <span id="propriete-GK">
                                         <div>
                                             <label for="diving"> Diving</label>
-                                            <input id="diving" type="number" placeholder="Diving" min="0" required
+                                            <input id="diving" type="number" placeholder="Diving" min="0"
                                                 name="diving" />
                                         </div>
                                     </span>
@@ -245,7 +245,7 @@
                                     <span id="propriete-GK">
                                         <div>
                                             <label for="handling"> Handling</label>
-                                            <input id="handling" type="number" placeholder="Handling" min="0" required
+                                            <input id="handling" type="number" placeholder="Handling" min="0"
                                                 name="handling" />
                                         </div>
                                     </span>
@@ -253,7 +253,7 @@
                                     <span id="propriete-GK">
                                         <div>
                                             <label for="kicking"> Kicking</label>
-                                            <input id="kicking" type="number" placeholder="Kicking" min="0" required
+                                            <input id="kicking" type="number" placeholder="Kicking" min="0"
                                                 name="kicking" />
                                         </div>
                                     </span>
@@ -261,7 +261,7 @@
                                     <span id="propriete-GK">
                                         <div>
                                             <label for="reflexes"> Reflexes</label>
-                                            <input id="reflexes" type="number" placeholder="Reflexes" min="0" required
+                                            <input id="reflexes" type="number" placeholder="Reflexes" min="0"
                                                 name="reflexes" />
                                         </div>
                                     </span>
@@ -269,8 +269,7 @@
                                     <span id="propriete-GK">
                                         <div>
                                             <label for="speed"> Speed</label>
-                                            <input id="speed" type="number" placeholder="Speed" min="0" required
-                                                name="speed" />
+                                            <input id="speed" type="number" placeholder="Speed" min="0" name="speed" />
                                         </div>
                                     </span>
 
@@ -278,7 +277,7 @@
                                         <div>
                                             <label for="positioning"> Positioning</label>
                                             <input id="positioning" type="number" placeholder="Positioning" min="0"
-                                                required name="positioning" />
+                                                name="positioning" />
                                         </div>
                                     </span>
 
@@ -327,18 +326,20 @@
                 <?php
                 include '../connexion.php'; 
 
-                $sql = "SELECT * FROM player NATURAL join statiqtiques_normalpl;";
+                $sql = "SELECT * FROM player NATURAL JOIN statiqtiques_normalpl NATURAL JOIN club NATURAL JOIN nationality;";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                   echo "<table class='table text-center'>";
-                  echo "<thead><tr><th>ID</th><th>NAME</th><th>Image</th><th>RAT</th><th>POS</th><th>PAC</th><th>SHOT</th><th>PAS</th><th>DRI</th><th>DEF</th><th>PHY</th><th>btn</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>NAME</th><th>Image</th><th>Club</th><th>Natio</th><th>RAT</th><th>POS</th><th>PAC</th><th>SHOT</th><th>PAS</th><th>DRI</th><th>DEF</th><th>PHY</th><th>btn</th></tr></thead>";
                  echo "<tbody class='table-group-divider'>";
                  while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                   echo "<td>" . $row["PlayerID"] . "</td>";
                  echo "<td>" . $row["Name"] . "</td>";
-                 echo "<td><img src='" . $row["ImagePlayer"] . "' alt='Player Image' style='width:50px; height:50px;'></td>";
+                 echo "<td><img src='" . $row["ImagePlayer"] . "' alt='Player Image' style='width:50px; height:50px; margin-top:0px;'></td>";
+                 echo "<td><img src='" . $row["ClubImage"] . "' alt='Player Image' style='width:50px; height:50px; margin-top:0px;'></td>";
+                 echo "<td><img src='" . $row["NationalityImage"] . "' alt='Player Image' style='width:50px; height:50px; margin-top:0px;'></td>";
                  echo "<td>" . $row["Rating"] . "</td>";
                  echo "<td>" . $row["Position"] . "</td>";
                  echo "<td>" . $row["Pace"] . "</td>";
@@ -347,14 +348,18 @@
                  echo "<td>" . $row["Dribbling"] . "</td>";
                  echo "<td>" . $row["Deffensing"] . "</td>";
                  echo "<td>" . $row["Physical"] . "</td>";
-                 echo "<td><button class='btn btn-primary  me-3  '>EDIT</button> <button class='btn btn-danger '>DELETE</button></td>";
-
+                //  echo "<td><button class='btn btn-primary  me-3  '>EDIT</button> <button class='btn btn-danger '>DELETE</button></td>";
+                 echo "<td>
+                 <a ><i class='fa-regular fa-pen-to-square '  ></i></a>
+                 <a href='supprimer_player.php?id=" . $row["PlayerID"] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer ce joueur ?\");'>
+            <i class='fa-solid fa-trash'></i></a>
+                             </td>";
                 echo "</tr>";
                 }
             echo "</tbody>";
                  echo "</table>";
             } else {
-              echo "<p>Aucun club trouvé.</p>";
+              echo "<p>Aucun Player trouvé.</p>";
                         }
             $conn->close(); 
               ?>
