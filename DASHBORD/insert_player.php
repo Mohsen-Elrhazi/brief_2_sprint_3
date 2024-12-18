@@ -36,7 +36,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $stmtStatsGK->close();
 
                 }else{
-                    // autre position
+                    $pace = ($_POST['pace']);
+                    $shooting = $_POST['shooting'];
+                    $passing = $_POST['passing'];
+                    $dribbling = $_POST['dribbling'];
+                    $defending = $_POST['deffensing'];
+                    $physical = $_POST['physical'];
+            
+                    $stmtNormalPL = $conn->prepare("INSERT INTO statiqtiques_NormalPL (Pace, Shooting, Passing, Dribbling, Deffensing, Physical, PlayerID) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                    $stmtNormalPL->bind_param("iiiiiii", $pace, $shooting, $passing, $dribbling, $defending, $physical,$PlayerID);
+                    
+                    if ($stmtNormalPL->execute()) {
+                        echo "<div class='alert alert-success' role='alert'>Joueur et statistiques NormalPL insérés avec succès.</div>";
+                    } else {
+                        echo "<div class='alert alert-danger' role='alert'>Erreur lors de l'insertion des statistiques GK : " . $stmtStatsGK->error . "</div>";
+                    }
+                    $stmtNormalPL->close();
+                    
                 }
             
             } else {
