@@ -302,12 +302,14 @@
 
             </div>
 
-            <div class="contain-players">
+            <div class="contain-affichage">
 
                 <!-- <table class="table text-center">
                     <thead>
                         <tr>
-                            <th class="col-2">NAME</th>
+                            <th class="col-1">id</th>
+                            <th class="col-1">NAME</th>
+                            <th class="col-1">IMAGE</th>
                             <th class="col-1">RAT</th>
                             <th class="col-1">POS</th>
                             <th class="col-1">PAC</th>
@@ -319,28 +321,43 @@
                             <th class="col-2">btn</th>
                         </tr>
                     </thead>
-                    <tbody class="table-group-divider"> -->
-                <!-- <tr>
-                            <th scope="row ">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td class="d-flex justify-content-evenly">
-                                <button type="button" class="btn btn-primary">EDIT</button>
-                                <button id="add-player" type="button" class="btn btn-danger">DELETE</button>
 
+                </table> -->
 
-                            </td>
-                        </tr> -->
+                <?php
+                include '../connexion.php'; 
 
+                $sql = "SELECT * FROM player NATURAL join statiqtiques_normalpl;";
+                $result = $conn->query($sql);
 
-                </tbody>
-                </table>
+                if ($result->num_rows > 0) {
+                  echo "<table class='table text-center'>";
+                  echo "<thead><tr><th>ID</th><th>NAME</th><th>Image</th><th>RAT</th><th>POS</th><th>PAC</th><th>SHOT</th><th>PAS</th><th>DRI</th><th>DEF</th><th>PHY</th><th>btn</th></tr></thead>";
+                 echo "<tbody class='table-group-divider'>";
+                 while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                  echo "<td>" . $row["PlayerID"] . "</td>";
+                 echo "<td>" . $row["Name"] . "</td>";
+                 echo "<td><img src='" . $row["ImagePlayer"] . "' alt='Player Image' style='width:50px; height:50px;'></td>";
+                 echo "<td>" . $row["Rating"] . "</td>";
+                 echo "<td>" . $row["Position"] . "</td>";
+                 echo "<td>" . $row["Pace"] . "</td>";
+                 echo "<td>" . $row["Shooting"] . "</td>";
+                 echo "<td>" . $row["Passing"] . "</td>";
+                 echo "<td>" . $row["Dribbling"] . "</td>";
+                 echo "<td>" . $row["Deffensing"] . "</td>";
+                 echo "<td>" . $row["Physical"] . "</td>";
+                 echo "<td><button class='btn btn-primary  me-3  '>EDIT</button> <button class='btn btn-danger '>DELETE</button></td>";
+
+                echo "</tr>";
+                }
+            echo "</tbody>";
+                 echo "</table>";
+            } else {
+              echo "<p>Aucun club trouvé.</p>";
+                        }
+            $conn->close(); 
+              ?>
             </div>
 
 
