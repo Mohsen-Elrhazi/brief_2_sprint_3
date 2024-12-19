@@ -23,7 +23,9 @@
             <div class="contain">
                 <div class="choix">
                     <a class="link" href="./dashbord.php">
-                        <h1>Dashbord</h1>
+                        <!-- <h1>Dashbord</h1> -->
+                        <img class="admin" src="../assets/images/utilisateur.png">
+
                     </a>
                     <div class="pl-cl-na">
                         <div>
@@ -84,51 +86,18 @@
                     <button id="search" type="button" class="btn btn-warning px-4">Search</button>
                 </div>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Add Club
-                </button>
+                <div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        Add Club
+                    </button>
 
-                <!-- Modal -->
-                <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">Etrer le club</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
+                    <!-- Modal -->
+                    <?php include 'modal_club.php' ?>;
+                    <!-- fin modal -->
 
-                                <form id="form-club" method="post" action="./insert_club.php">
-
-                                    <div>
-                                        <label for=" name">name :</label>
-                                        <input id="name" name="name" type="text" placeholder="Name" maxlength="" />
-                                    </div>
-
-                                    <div>
-                                        <label for="ImageURL">ImageURL :</label>
-                                        <input id="ImageURL" name="ImageURL" type="text" placeholder="ImageURL"
-                                            maxlength="" />
-                                    </div>
-
-
-
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div>
-                            </form>
-
-                        </div>
-                    </div>
                 </div>
-
             </div>
 
 
@@ -136,31 +105,73 @@
             <div class="contain-affichage">
 
                 <?php
-                include '../connexion.php'; 
+include '../connexion.php'; 
 
-                $sql = "SELECT ClubID, ClubName, ClubImage FROM club";
-                $result = $conn->query($sql);
+$sql = "SELECT ClubID, ClubName, ClubImage FROM club";
+$result = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
-                  echo "<table class='table text-center'>";
-                  echo "<thead><tr><th>ID</th><th>Nom</th><th>Image</th><th>Buttons</th></tr></thead>";
-                 echo "<tbody class='table-group-divider'>";
-                 while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                  echo "<td>" . $row["ClubID"] . "</td>";
-                 echo "<td>" . $row["ClubName"] . "</td>";
-                 echo "<td><img src='" . $row["ClubImage"] . "' alt='Club Image' style='width:50px; height:50px;'></td>";
-                 echo "<td><button class='btn btn-primary px-4 me-3 ms-4 mt-2'>EDIT</button> <button class='btn btn-danger ms-2 mt-2'>DELETE</button></td>";
+if ($result->num_rows > 0) {
+    echo "<table class='table text-center'>";
+    echo "<thead><tr><th>ID</th><th>Nom</th><th>Image</th><th>Actions</th></tr></thead>";
+    echo "<tbody class='table-group-divider'>";
+    while ($row = $result->fetch_assoc()) {
+        $clubID = $row["ClubID"];
+        $clubName = $row["ClubName"];
+        $clubImage = $row["ClubImage"];
 
-                echo "</tr>";
-                }
-            echo "</tbody>";
-                 echo "</table>";
-            } else {
-              echo "<p>Aucun club trouvé.</p>";
-                        }
-            $conn->close(); 
-              ?>
+        echo "<tr>";
+        echo "<td>" . $clubID . "</td>";
+        echo "<td>" . $clubName . "</td>";
+        echo "<td><img src='" . $clubImage . "' alt='Club Image' style='width:50px; height:50px;'></td>";
+        echo "<td>
+            <a href='#' data-bs-toggle='modal' data-bs-target='#modalEditClub$clubID'>
+                <i class='fa-regular fa-pen-to-square'></i>
+            </a>
+            <a href='supprimer_club.php?id=$clubID' 
+                onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer ce club ?\");'>
+                <i class='fa-solid fa-trash'></i>
+            </a>
+        </td>";
+        echo "</tr>";
+
+        // Modal spécifique à chaque club
+        echo "
+        <div class='modal fade' id='modalEditClub$clubID' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='modalEditClubLabel$clubID' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h1 class='modal-title fs-5' id='modalEditClubLabel$clubID'>Modifier le Club</h1>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <div class='modal-body'>
+                        <form method='post' action='modifier_club.php'>
+                            <input type='hidden' name='ClubID' value='$clubID'>
+                            <div class='mb-3'>
+                                <label for='ClubName$clubID' class='form-label'>Nom :</label>
+                                <input id='ClubName$clubID' name='ClubName' type='text' class='form-control' value='$clubName' >
+                            </div>
+                            <div class='mb-3'>
+                                <label for='ClubImage$clubID' class='form-label'>Image URL :</label>
+                                <input id='ClubImage$clubID' name='ClubImage' type='text' class='form-control' value='$clubImage' >
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                                <button type='submit' class='btn btn-primary'>Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>";
+    }
+    echo "</tbody>";
+    echo "</table>";
+} else {
+    echo "<p>Aucun club trouvé.</p>";
+}
+$conn->close();
+?>
+
 
             </div>
 

@@ -12,6 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <!-- biblio chart-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+
     <title>dashbord</title>
 </head>
 
@@ -25,16 +29,14 @@
                     <a class="link" href="./dashbord.php">
                         <!-- <h1>Dashbord</h1> -->
                         <img class="admin" src="../assets/images/utilisateur.png">
+
                     </a>
 
-                    <div class=" pl-cl-na">
-
-                        <a class="link" href="statistiques.php">
-                            <div>
-                                <img src="./images/statistique.png" />
-                                <span>Statistiques</span>
-                            </div>
-                        </a>
+                    <div class="pl-cl-na">
+                        <div>
+                            <img src="./images/statistique.png" />
+                            <span>Statistiques</span>
+                        </div>
 
                         <a class="link" href="players.php">
                             <div>
@@ -84,20 +86,14 @@
 
         </div>
 
-        <div class="mohsen-animation">
-            <h1> <span id="anim"></span>
-            </h1>
-        </div>
+        <div>PAGE STATSTIQUES </div>
     </section>
-
-    <!-- biblio chart-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-    </script>
 
     <!-- bottstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+
 </body>
 
 </html>

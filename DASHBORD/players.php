@@ -23,7 +23,9 @@
             <div class="contain">
                 <div class="choix">
                     <a class="link" href="./dashbord.php">
-                        <h1>Dashbord</h1>
+                        <!-- <h1>Dashbord</h1> -->
+                        <img class="admin" src="../assets/images/utilisateur.png">
+
                     </a>
                     <div class="pl-cl-na">
                         <div>
@@ -83,7 +85,7 @@
             <div class="navbar">
                 <div class="d-flex gap-3">
                     <input class="custom-search" type="search" placeholder="Search Player">
-                    <button id="search" type="button" class="btn btn-warning px-4">Search</button>
+                    <button id="search" type="button" class="btn btn-info text-light px-4">Search</button>
 
                 </div> <!-- Button trigger modal -->
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -298,6 +300,7 @@
                         </div>
                     </div>
                 </div>
+                <!--fin modal  -->
 
             </div>
 
@@ -331,16 +334,16 @@
 
                 if ($result->num_rows > 0) {
                   echo "<table class='table text-center'>";
-                  echo "<thead><tr><th>ID</th><th>NAME</th><th>Image</th><th>Club</th><th>Natio</th><th>RAT</th><th>POS</th><th>PAC</th><th>SHOT</th><th>PAS</th><th>DRI</th><th>DEF</th><th>PHY</th><th>btn</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>NAME</th><th>Image</th><th>Club</th><th>Natio</th><th>RAT</th><th>POS</th><th>PAC</th><th>SHOT</th><th>PAS</th><th>DRI</th><th>DEF</th><th>PHY</th><th>Actions</th></tr></thead>";
                  echo "<tbody class='table-group-divider'>";
                  while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                   echo "<td>" . $row["PlayerID"] . "</td>";
                  echo "<td>" . $row["Name"] . "</td>";
                  echo "<td><img src='" . $row["ImagePlayer"] . "' alt='Player Image' style='width:50px; height:50px; margin-top:0px;'></td>";
-                 echo "<td><img src='" . $row["ClubImage"] . "' alt='Player Image' style='width:50px; height:50px; margin-top:0px;'></td>";
-                 echo "<td><img src='" . $row["NationalityImage"] . "' alt='Player Image' style='width:50px; height:50px; margin-top:0px;'></td>";
-                 echo "<td>" . $row["Rating"] . "</td>";
+                 echo "<td ><img src='" . $row["ClubImage"] . "' alt='club Image' style='width:40px; height:40px; margin-top:0px;'></td>";
+                 echo "<td><img src='" . $row["NationalityImage"] . "' alt='nationality Image' style='width:50px; height:50px; margin-top:0px;'></td>";
+                 echo "<td >" . $row["Rating"] . "</td>";
                  echo "<td>" . $row["Position"] . "</td>";
                  echo "<td>" . $row["Pace"] . "</td>";
                  echo "<td>" . $row["Shooting"] . "</td>";

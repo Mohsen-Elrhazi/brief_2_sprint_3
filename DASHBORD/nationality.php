@@ -23,7 +23,9 @@
             <div class="contain">
                 <div class="choix">
                     <a class="link" href="./dashbord.php">
-                        <h1>Dashbord</h1>
+                        <!-- <h1>Dashbord</h1> -->
+                        <img class="admin" src="../assets/images/utilisateur.png">
+
                     </a>
                     <div class="pl-cl-na">
                         <div>
@@ -141,15 +143,49 @@
 
                 if ($result->num_rows > 0) {
                   echo "<table class='table text-center'>";
-                  echo "<thead><tr><th>ID</th><th>Nom</th><th>Image</th><th>Buttons</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Nom</th><th>Image</th><th>Actions</th></tr></thead>";
                  echo "<tbody class='table-group-divider'>";
                  while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                   echo "<td>" . $row["NationalityID"] . "</td>";
                  echo "<td>" . $row["NationalityName"] . "</td>";
                  echo "<td><img src='" . $row["NationalityImage"] . "' alt='Nationality Image' style='width:50px; height:50px;'></td>";
-                 echo "<td><button class='btn btn-primary px-4 me-3 ms-4 mt-2'>EDIT</button> <button class='btn btn-danger ms-2 mt-2'>DELETE</button></td>";
+                 echo "<td>
+                 <a href='#'  data-bs-toggle='modal' data-bs-target='#modalEditNationality$NationalityID' ><i class='fa-regular fa-pen-to-square '  ></i></a>
+                 <a href='supprimer_nationality.php?id=" . $row["NationalityID"] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cette nationalité ?\");'>
+            <i class='fa-solid fa-trash'></i></a>
+                             </td>";
                 echo "</tr>";
+                 // Modal spécifique à chaque nationality
+        echo "
+        <div class='modal fade' id='modalEditNationality$NationalityID' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='modalEditNationality$NationalityID' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h1 class='modal-title fs-5' id='modalEditNationality$NationalityID'>Modifier le Club</h1>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <div class='modal-body'>
+                        <form method='post' action='modifier_club.php'>
+                            <input type='hidden' name='ClubID' value='$NationalityID'>
+                            <div class='mb-3'>
+                                <label for='NationalityName$NationalityID' class='form-label'>Nom :</label>
+                                <input id='NationalityName$NationalityID' name='NationalityName' type='text' class='form-control' value='$NationalityName' >
+                            </div>
+                            <div class='mb-3'>
+                                <label for='NationalityImage$NationalityID' class='form-label'>Image URL :</label>
+                                <input id='NationalityImage$NationalityID' name='NationalityImage' type='text' class='form-control' value='$NationalityImage' >
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                                <button type='submit' class='btn btn-primary'>Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>";
+                
                 }
             echo "</tbody>";
                  echo "</table>";
