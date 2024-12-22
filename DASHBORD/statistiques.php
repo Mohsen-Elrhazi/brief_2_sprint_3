@@ -83,16 +83,85 @@
                 </a>
 
             </div>
+        </div>
+
+        <div id="partie-sts">
+            <div class="stats">
+                <div class="total-players">
+                    <h2>Total Players :
+                        <?php 
+                     include '../connexion.php'; 
+
+                     $sql = "SELECT  count(PlayerID) as nbr_players FROM player;";
+                     $result = $conn->query($sql);
+                    while( $row = $result->fetch_assoc()){
+                      echo  $nbrPlayers=$row['nbr_players'];
+                   
+                    }
+                    ?>
+                    </h2>
+                </div>
+
+                <div class="total-clubs">
+                    <h2>Total Clubs :
+                        <?php 
+                     include '../connexion.php'; 
+
+                     $sql = "SELECT  count(ClubID) as nbr_club FROM club;";
+                     $result = $conn->query($sql);
+                    while( $row = $result->fetch_assoc()){
+                      echo  $nbrPlayers=$row['nbr_club'];
+                   
+                    }
+                    ?>
+                    </h2>
+                </div>
+
+                <div class="total-nationalitys">
+                    <h2>Total Nationalitys :
+                        <?php 
+                     include '../connexion.php'; 
+
+                     $sql = "SELECT  count(NationalityID) as nbr_nationality FROM nationality;";
+                     $result = $conn->query($sql);
+                    while( $row = $result->fetch_assoc()){
+                      echo  $nbrPlayers=$row['nbr_nationality'];
+                   
+                    }
+                    ?>
+                    </h2>
+
+                </div>
+            </div>
+
+            <div class="charts">
+                <div>
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+                <div>
+                    <canvas id="pieChart"></canvas>
+                </div>
+
+            </div>
+
 
         </div>
 
-        <div>PAGE STATSTIQUES </div>
+
+
+
+
     </section>
 
     <!-- bottstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./dashbord.js"></script>
+
 
 </body>
 

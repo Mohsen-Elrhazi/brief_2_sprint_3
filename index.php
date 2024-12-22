@@ -117,19 +117,20 @@
 
             </div>
 
-
-
         </div>
     </section>
 
-    <!--todo Reservation -->
-    <!-- <h1 style="text-align:center; margin-top:18px;" >Réservation</h1>
-    <div id="reservation">
+    <div id="modal-list">
+        <i class="fa-regular fa-circle-xmark"></i>
 
-    </div> -->
+        <div id="list-player">
+
+        </div>
+
+    </div>
 
     <!-- bottstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
 
     <script src="script.js"></script>

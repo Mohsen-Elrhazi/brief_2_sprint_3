@@ -1,7 +1,7 @@
 <?php
 include '../connexion.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {      
     $name = $_POST["name"];
     $imagePlayer = trim($_POST["image-player"]);
     $post = $_POST["post"];

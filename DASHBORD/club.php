@@ -134,7 +134,7 @@ if ($result->num_rows > 0) {
         </td>";
         echo "</tr>";
 
-        // Modal spécifique à chaque club
+        // Modal specifique a chaque club remplit par ses infos
         echo "
         <div class='modal fade' id='modalEditClub$clubID' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='modalEditClubLabel$clubID' aria-hidden='true'>
             <div class='modal-dialog'>

@@ -33,10 +33,10 @@
                             <span>Statistiques</span>
                         </div>
 
-                        <a class="link" href="players.php">
+                        <a class="link " href="players.php">
                             <div>
 
-                                <img src="./images/joueur-de-football.png" />
+                                <img src=" ./images/joueur-de-football.png" />
                                 <span>Players</span>
                             </div>
                         </a>
@@ -285,11 +285,6 @@
 
                                     <!--todo fin prp gardient -->
 
-                                    <!-- <button id="add-player" type="button">Add</button>
-                                    <button id="edit-player" type="button">Edit</button>
-                                    <button id="annuler" type="button">Annuler</button>
-                                    <button id="change-formation" type="button">formation</button> -->
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -306,26 +301,6 @@
 
             <div class="contain-affichage">
 
-                <!-- <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th class="col-1">id</th>
-                            <th class="col-1">NAME</th>
-                            <th class="col-1">IMAGE</th>
-                            <th class="col-1">RAT</th>
-                            <th class="col-1">POS</th>
-                            <th class="col-1">PAC</th>
-                            <th class="col-1">SHOT</th>
-                            <th class="col-1">PAS</th>
-                            <th class="col-1">DRI</th>
-                            <th class="col-1">DEF</th>
-                            <th class="col-1">PHY</th>
-                            <th class="col-2">btn</th>
-                        </tr>
-                    </thead>
-
-                </table> -->
-
                 <?php
                 include '../connexion.php'; 
 
@@ -337,35 +312,98 @@
                   echo "<thead><tr><th>ID</th><th>NAME</th><th>Image</th><th>Club</th><th>Natio</th><th>RAT</th><th>POS</th><th>PAC</th><th>SHOT</th><th>PAS</th><th>DRI</th><th>DEF</th><th>PHY</th><th>Actions</th></tr></thead>";
                  echo "<tbody class='table-group-divider'>";
                  while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                  echo "<td>" . $row["PlayerID"] . "</td>";
-                 echo "<td>" . $row["Name"] . "</td>";
-                 echo "<td><img src='" . $row["ImagePlayer"] . "' alt='Player Image' style='width:50px; height:50px; margin-top:0px;'></td>";
-                 echo "<td ><img src='" . $row["ClubImage"] . "' alt='club Image' style='width:40px; height:40px; margin-top:0px;'></td>";
-                 echo "<td><img src='" . $row["NationalityImage"] . "' alt='nationality Image' style='width:50px; height:50px; margin-top:0px;'></td>";
-                 echo "<td >" . $row["Rating"] . "</td>";
-                 echo "<td>" . $row["Position"] . "</td>";
-                 echo "<td>" . $row["Pace"] . "</td>";
-                 echo "<td>" . $row["Shooting"] . "</td>";
-                 echo "<td>" . $row["Passing"] . "</td>";
-                 echo "<td>" . $row["Dribbling"] . "</td>";
-                 echo "<td>" . $row["Deffensing"] . "</td>";
-                 echo "<td>" . $row["Physical"] . "</td>";
-                //  echo "<td><button class='btn btn-primary  me-3  '>EDIT</button> <button class='btn btn-danger '>DELETE</button></td>";
-                 echo "<td>
-                 <a ><i class='fa-regular fa-pen-to-square '  ></i></a>
-                 <a href='supprimer_player.php?id=" . $row["PlayerID"] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer ce joueur ?\");'>
-            <i class='fa-solid fa-trash'></i></a>
-                             </td>";
-                echo "</tr>";
-                }
-            echo "</tbody>";
-                 echo "</table>";
-            } else {
-              echo "<p>Aucun Player trouvé.</p>";
-                        }
-            $conn->close(); 
-              ?>
+                    // Stockage des valeurs dans des variables
+                    $playerID = $row["PlayerID"];
+                    $playerName = $row["Name"];
+                    $playerImage = $row["ImagePlayer"];
+                    $clubImage = $row["ClubImage"];
+                    $clubName=$row["ClubName"];
+                    $nationalityImage = $row["NationalityImage"];
+                    $nationalityName = $row["NationalityName"];
+                    $rating = $row["Rating"];
+                    $position = $row["Position"];
+                    $pace = $row["Pace"];
+                    $shooting = $row["Shooting"];
+                    $passing = $row["Passing"];
+                    $dribbling = $row["Dribbling"];
+                    $defending = $row["Deffensing"];
+                    $physical = $row["Physical"];
+
+                
+                    // Construction de la ligne de tableau
+                    echo "<tr>";
+                    echo "<td>" . $playerID . "</td>";
+                    echo "<td>" . $playerName . "</td>";
+                    echo "<td><img src='" . $playerImage . "' alt='Player Image' style='width:50px; height:50px; margin-top:0px;'></td>";
+                    echo "<td><img src='" . $clubImage . "' alt='Club Image' style='width:40px; height:40px; margin-top:0px;'></td>";
+                    echo "<td><img src='" . $nationalityImage . "' alt='Nationality Image' style='width:50px; height:50px; margin-top:0px;'></td>";
+                    echo "<td>" . $rating . "</td>";
+                    echo "<td>" . $position . "</td>";
+                    echo "<td>" . $pace . "</td>";
+                    echo "<td>" . $shooting . "</td>";
+                    echo "<td>" . $passing . "</td>";
+                    echo "<td>" . $dribbling . "</td>";
+                    echo "<td>" . $defending . "</td>";
+                    echo "<td>" . $physical . "</td>";
+                    echo "<td>
+                        <a href='#'><i class='fa-regular fa-pen-to-square'  data-bs-toggle='modal' data-bs-target='#modalEditPlayer$playerID'></i></a>
+                        <a href='supprimer_player.php?id=$playerID' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer ce joueur ?\");'>
+                            <i class='fa-solid fa-trash'></i>
+                        </a>
+                    </td>";
+                    echo "</tr>";
+                  
+                    // Modal spécifique à chaque joueur rempli par ses infos
+        echo "
+        <div class='modal fade' id='modalEditPlayer$playerID' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='modalEditPlayerLabel$playerID' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h1 class='modal-title fs-5' id='modalEditPlayerLabel$playerID'>Modifier le Joueur</h1>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <div class='modal-body d-grid gap-3 align-items-center' style='grid-template-columns: repeat(2, 1fr);'>
+                        <form  id='form-player' method='post' action='' >
+                            <input type='hidden' name='PlayerID' value='$playerID'>
+                            <div class='mb-3'>
+                                <label for='PlayerName$playerID' class='form-label'>Nom :</label>
+                                <input id='PlayerName$playerID' name='PlayerName' type='text' class='form-control' value='$playerName' >
+                            </div>
+                            <div class='mb-3'>
+                                <label for='PlayerImage$playerID' class='form-label'>Image URL :</label>
+                                <input id='PlayerImage$playerID' name='PlayerImage' type='text' class='form-control' value='$playerImage' >
+                            </div>
+                             <div class='mb-3'>
+                                <label for='PlayerImage$playerID' class='form-label'>Position :</label>
+                                <input id='PlayerImage$playerID' name='position' type='text' class='form-control' value='$position' >
+                            </div>
+                            <div class='mb-3'>
+                                <label for='PlayerClub$playerID' class='form-label'>Nationality :</label>
+                                <input id='PlayerClub$playerID' name='PlayerNationality' type='text' class='form-control' value='$nationalityImage' >
+                            </div>
+                        
+                            <select id='PlayerClub$playerID' name='club'>
+                               <option value=' $clubImage'>$clubName</option>
+                            </select>
+
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                    <button type='submit' class='btn btn-primary'>Save</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        </div>";
+
+        }
+        echo "</tbody>";
+        echo "</table>";
+        } else {
+        echo "<p>Aucun Player trouvé.</p>";
+        }
+        $conn->close();
+        ?>
             </div>
 
 

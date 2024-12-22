@@ -146,16 +146,21 @@
                   echo "<thead><tr><th>ID</th><th>Nom</th><th>Image</th><th>Actions</th></tr></thead>";
                  echo "<tbody class='table-group-divider'>";
                  while ($row = $result->fetch_assoc()) {
+                    $NationalityID = $row["NationalityID"];
+                    $NationalityName = $row["NationalityName"];
+                    $NationalityImage = $row["NationalityImage"];
+            
                 echo "<tr>";
-                  echo "<td>" . $row["NationalityID"] . "</td>";
-                 echo "<td>" . $row["NationalityName"] . "</td>";
-                 echo "<td><img src='" . $row["NationalityImage"] . "' alt='Nationality Image' style='width:50px; height:50px;'></td>";
+                  echo "<td>" . $NationalityID . "</td>";
+                 echo "<td>" . $NationalityName . "</td>";
+                 echo "<td><img src='" . $NationalityImage . "' alt='Nationality Image' style='width:50px; height:50px;'></td>";
                  echo "<td>
                  <a href='#'  data-bs-toggle='modal' data-bs-target='#modalEditNationality$NationalityID' ><i class='fa-regular fa-pen-to-square '  ></i></a>
-                 <a href='supprimer_nationality.php?id=" . $row["NationalityID"] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cette nationalité ?\");'>
+                 <a href='supprimer_nationality.php?id=" . $NationalityID. "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cette nationalité ?\");'>
             <i class='fa-solid fa-trash'></i></a>
                              </td>";
                 echo "</tr>";
+                
                  // Modal spécifique à chaque nationality
         echo "
         <div class='modal fade' id='modalEditNationality$NationalityID' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='modalEditNationality$NationalityID' aria-hidden='true'>
@@ -166,8 +171,8 @@
                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                     </div>
                     <div class='modal-body'>
-                        <form method='post' action='modifier_club.php'>
-                            <input type='hidden' name='ClubID' value='$NationalityID'>
+                        <form id='form-nationality' method='post' action='modifier_nationality.php'>
+                            <input type='hidden' name='NationalityID' value='$NationalityID'>
                             <div class='mb-3'>
                                 <label for='NationalityName$NationalityID' class='form-label'>Nom :</label>
                                 <input id='NationalityName$NationalityID' name='NationalityName' type='text' class='form-control' value='$NationalityName' >

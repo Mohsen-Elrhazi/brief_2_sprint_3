@@ -124,10 +124,16 @@ section .contain-terrain .terrain {
     cursor:pointer;
     transition: all 0.7s ease;
     /* background-color:red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .card-player .name-post{
     position:absolute;
+    /* display: block !important; */
     /* background-color: black; */
      background-image: url("./images/pos_base.png");
     background-repeat: no-repeat;
@@ -139,71 +145,92 @@ section .contain-terrain .terrain {
     font-size:14px;
     left:50%;
     transform: translate(-50%);
-    bottom:-30px;
+    bottom:-40px;
     z-index:4
 }
 
 .new-card-player{
-    position:relative;
+    /* position:relative; */
     width: 130px;
-    height: 176px;
+    height: 200px;
     display:grid;
     /* grid-template-rows:50% 30% 12%;  */
-    grid-template-rows:63% 25% ; 
-    row-gap:5px;
-    color:#000;
+    grid-template-rows:63% 37% ; 
+    /* row-gap:8px; */
+    /* color:#000; */
     transition: all 0.7s ease;
+    background-image:url("./images/yourfutcard_player_moments_eafc_25_card_750x.webp");
+    /* background-image:url("./images/12_icon.png"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor:pointer;
+    margin-left: -4.2px;
 }
+
+
+/* .new-card-player:hover{
+   transform: scale(1.06);
+} */
 
 .divContain{
     width:100%;
     display: grid;
-    grid-template-columns: 24% 76%;
+    grid-template-columns: 34% 66%;
     padding:15px 4px 4px 4px;
-    
-
+    /* background-color: #ed0c0ce9; */
 }
 
 .ratingCountryClub {
-    /* background-color: pink; */
+    /* background-color: rgb(0, 255, 64); */
     width: 100%;
+    height: 100%;
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap:7px;
+    /* justify-content: center; */
+    padding-top: 18px;
+    /* gap:2px; */
+    font-size:12px;
+    color: #fff;
 }
 
 .image-name {
-    /* background-color: green; */
+    /* background-color: rgba(0, 66, 128, 0.71); */
     width: 100%;
     /* margin:0 auto; */
     display:flex;
     flex-direction: column-reverse;
     align-items:center;
     justify-content: center;
-    gap:2px;
+    gap:3px;
     font-size:11px;
     font-weight:bold;
-    padding:6px;
+    padding:12px 6px 6px 6px;
 }
 
 .image-name p{
     text-align: center;
+    color:#fff;
 }
 
 .info {
-    background-color: rgba(245, 245, 245, 0.24);
-    width: 90%;
-    height:100%;
-    margin:0 auto;
-    padding:4px;
+    background-color: #ffffff1f;
+    width: 82%;
+    height: 57%;
+    margin: -2px 0px 0px 13.4px;
+    /* padding:4px !important; */
     border-radius:6px;
-    display:flex;
+    /* display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-content:center;
-    gap:3px;
+    align-content:center; */
+    /* gap:3px; */
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    justify-items: center;
+    align-items: center;
+    
 }
 
 .info p{
@@ -211,13 +238,16 @@ section .contain-terrain .terrain {
     /* background-color: red; */
     display:flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    font-size:7px;
+    font-size:6px;
+    margin-bottom: 0px;
+    color:#fff;
 }
 
 .info p span{
     font-weight: bold;
-    font-size: 10px;
+    font-size: 8px;
 }
 
 
@@ -748,3 +778,46 @@ section .menu form button{
 }
 
 
+#modal-list{
+    position: absolute;
+    width:60%;
+    min-height:400px;
+    top:40%;
+    left:50%;
+    transform:translate(-50%);
+    background-color: #f3f1f1f7;
+    padding:16px;
+
+    background-color: transparent;
+     backdrop-filter: blur(8px);
+   
+    /* justify-content: space-between;  */
+    /* align-items: center; */
+    z-index:12;
+    color:#fff;
+}
+
+#list-player{
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.fa-circle-xmark{
+    display: block !important;
+    position:absolute;
+    font-size:46px;
+    top:-35px;
+    right:-33px;
+    /* opacity:.6; */
+    transition:.3 ease;
+    cursor:pointer;
+    color: red;
+    background-color: #ffffff;
+    border-radius:50%;
+}
+
+.fa-circle-xmark:hover{
+    opacity:1;
+    color: rgb(219, 0, 0);
+}
