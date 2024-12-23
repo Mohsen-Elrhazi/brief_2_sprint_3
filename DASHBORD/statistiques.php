@@ -135,11 +135,16 @@
             </div>
 
             <div class="charts">
-                <div>
+                <div class="chart-club-data">
+                    <h4>Players By Club</h4>
+
                     <canvas id="doughnutChart"></canvas>
                 </div>
-                <div>
-                    <canvas id="pieChart"></canvas>
+                <div class="chart-nationality-data">
+                    <h4>Players By Nationality</h4>
+
+                    <canvas id="nationalityDoughnutChart"></canvas>
+                    <!-- <canvas id="pieChart"></canvas> -->
                 </div>
 
             </div>

@@ -1,99 +1,123 @@
-// import Chart from '/node_modules/chart.js/auto';
+document.addEventListener("DOMContentLoaded", async function () {
+  try {
+    const response = await fetch("getClubData.php");
+    const data = await response.json();
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Doughnut Chart
-    const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+    const clubNames = data.map((item) => item.ClubName);
+    const playerCounts = data.map((item) => item.playerCount);
+
+    const doughnutCtx = document
+      .getElementById("doughnutChart")
+      .getContext("2d");
     new Chart(doughnutCtx, {
-      type: 'doughnut',
+      type: "doughnut",
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
-        datasets: [{
-          label: 'Doughnut Chart',
-          data: [12, 19, 3, 5, 2],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.7)',
-            'rgba(54, 162, 235, 0.7)',
-            'rgba(255, 206, 86, 0.7)',
-            'rgba(75, 192, 192, 0.7)',
-            'rgba(153, 102, 255, 0.7)',
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-          ],
-          borderWidth: 1
-        }]
+        labels: clubNames,
+        datasets: [
+          {
+            label: "Players by Club",
+            data: playerCounts,
+            backgroundColor: generateColors(clubNames.length),
+            borderColor: generateColors(clubNames.length, true),
+            borderWidth: 1,
+          },
+        ],
       },
       options: {
         responsive: true,
         plugins: {
           legend: {
-            position: 'top',
+            position: "top",
           },
-        }
-      }
+        },
+      },
     });
-  
-    // Pie Chart
-    const pieCtx = document.getElementById('pieChart').getContext('2d');
-    new Chart(pieCtx, {
-      type: 'pie',
+  } catch (error) {
+    console.error("Erreur lors du chargement des données :", error);
+  }
+});
+
+// Fonction pour générer des couleurs aléatoires
+function generateColors(count, border = false) {
+  const colors = [];
+  for (let i = 0; i < count; i++) {
+    const color = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
+      Math.random() * 255
+    )}, ${Math.floor(Math.random() * 255)}, 0.7)`;
+    colors.push(border ? color.replace("0.7", "1") : color);
+  }
+  return colors;
+}
+
+//! 2eme chart de players per nationality
+document.addEventListener("DOMContentLoaded", async function () {
+  try {
+    const response = await fetch("getNationalityData.php");
+    const data = await response.json();
+
+    const nationalityNames = data.map((item) => item.NationalityName);
+    const playerCounts = data.map((item) => item.playerCount);
+
+    const doughnutCtx = document
+      .getElementById("nationalityDoughnutChart")
+      .getContext("2d");
+    new Chart(doughnutCtx, {
+      type: "doughnut",
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
-        datasets: [{
-          label: 'Pie Chart',
-          data: [15, 10, 5, 8, 12],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.7)',
-            'rgba(54, 162, 235, 0.7)',
-            'rgba(255, 206, 86, 0.7)',
-            'rgba(75, 192, 192, 0.7)',
-            'rgba(153, 102, 255, 0.7)',
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-          ],
-          borderWidth: 1
-        }]
+        labels: nationalityNames,
+        datasets: [
+          {
+            label: "Players by Nationality",
+            data: playerCounts,
+            backgroundColor: generateColors(nationalityNames.length),
+            borderColor: generateColors(nationalityNames.length, true),
+            borderWidth: 1,
+          },
+        ],
       },
       options: {
         responsive: true,
         plugins: {
           legend: {
-            position: 'right',
+            position: "top",
           },
-        }
-      }
+        },
+      },
     });
-  });
+  } catch (error) {
+    console.error("Erreur lors du chargement des données :", error);
+  }
+});
 
-
-
+// Fonction pour générer des couleurs aléatoires
+function generateColors(count, border = false) {
+  const colors = [];
+  for (let i = 0; i < count; i++) {
+    const color = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
+      Math.random() * 255
+    )}, ${Math.floor(Math.random() * 255)}, 0.7)`;
+    colors.push(border ? color.replace("0.7", "1") : color);
+  }
+  return colors;
+}
 
 document.querySelectorAll("#normal-player").forEach((element) => {
-    element.style.display = "none";
+  element.style.display = "none";
 });
-document.getElementById("post").addEventListener("change", function() {
-    if (document.getElementById("post").value === "GK") {
-        document.querySelectorAll("#normal-player").forEach((element) => {
-            element.style.display = "none";
-        });
-        document.querySelectorAll("#propriete-GK").forEach((element) => {
-            element.style.display = "block";
-        });
-    } else {
-        document.querySelectorAll("#normal-player").forEach((element) => {
-            element.style.display = "block";
-        });
-        document.querySelectorAll("#propriete-GK").forEach((element) => {
-            element.style.display = "none";
-        });
-    }
+document.getElementById("post").addEventListener("change", function () {
+  if (document.getElementById("post").value === "GK") {
+    document.querySelectorAll("#normal-player").forEach((element) => {
+      element.style.display = "none";
+    });
+    document.querySelectorAll("#propriete-GK").forEach((element) => {
+      element.style.display = "block";
+    });
+  } else {
+    document.querySelectorAll("#normal-player").forEach((element) => {
+      element.style.display = "block";
+    });
+    document.querySelectorAll("#propriete-GK").forEach((element) => {
+      element.style.display = "none";
+    });
+  }
 });
